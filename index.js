@@ -1,4 +1,5 @@
 const express = require('express')
+require('dotenv').config()
 const clienteController = require ('./controllers/cliente.controller')
 
 const app = express()
@@ -12,4 +13,4 @@ app.post('/clientes/', clienteController.registrar)
 app.get('/clientes', clienteController.listar)
 app.delete('/clientes/:correo', clienteController.eliminar)
 
-app.listen(8080)
+app.listen(process.env.PORT)
