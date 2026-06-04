@@ -2,10 +2,10 @@
   "name": "conexionmongoose",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "peluqueria.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node peluqueria.js",
+    "dev": "nodemon peluqueria.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
