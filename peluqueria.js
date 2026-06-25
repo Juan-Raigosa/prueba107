@@ -3,12 +3,7 @@ require('dotenv').config()
 const clienteController = require ('./controllers/servicios.controller')
 const { default: mongoose } = require('mongoose')
 
-function conectar (){
-    const URI = 'mongodb+srv://Juan_Raigosa:K0ZwF0zr0HCrE1hN@prueba107.pwe3cyx.mongodb.net/servicios'
-    mongoose.connect(URI)
-}
-
-conectar()
+mongoose.connect(process.env.MONGODB_URI)
 
 const app = express()
 
@@ -21,6 +16,4 @@ app.post('/servicios/', clienteController.registrar)
 app.put('/servicios/:nombre', clienteController.actualizar)
 app.delete('/servicios/:nombre', clienteController.eliminar)
 
-app.listen(process.env.PORT, () =>(
-    console.log('App en linea')
-))
+app.listen(process.env.PORT || 8080, '0.0.0.0', () => console.log('Servidor en puerto', process.env.PORT || 8080))
