@@ -3,7 +3,7 @@ const modeloCliente = require('../models/cliente.model')
 exports.listar = async (req, res) => {
     try {
         const clientes = await modeloCliente.find();
-        res.json(clientes);
+        res.render('pages/index3', {clientes: clientes});
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -13,7 +13,7 @@ exports.listar = async (req, res) => {
 exports.consultarId = async (req, res) => {
     try {
         const clientes = await modeloCliente.find({email:req.params.correo});
-        res.json(clientes);
+        res.render('/pages/index3');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -27,7 +27,7 @@ exports.registrar = async (req, res) => {
             telefono: req.body.telefono
         }
         const clientes = await modeloCliente.insertOne(clienteNuevo);
-        res.json(clientes);
+        res.render('/pages/form');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -44,7 +44,7 @@ exports.actualizar = async (req, res) => {
             {email: req.params.correo},
             {$set: clienteNuevo}
         );
-        res.json(clientes);
+        res.render('/pages/index3');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -53,7 +53,7 @@ exports.actualizar = async (req, res) => {
 exports.eliminar = async (req, res) => {
     try {
         const clientes = await modeloCliente.deleteOne({email:req.params.correo});
-        res.json(clientes);
+        res.render('/pages/index3');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

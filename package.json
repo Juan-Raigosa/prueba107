@@ -2,10 +2,10 @@
   "name": "conexionmongoose",
   "version": "1.0.0",
   "description": "",
-  "main": "peluqueria.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node peluqueria.js",
-    "dev": "nodemon peluqueria.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,6 +14,7 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
     "express": "^5.2.1",
     "mongoose": "^9.6.3"
   },
