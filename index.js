@@ -17,4 +17,4 @@ app.get('/clientes/:correo', clienteController.consultarId)
 app.post('/clientes/', clienteController.registrar)
 app.delete('/clientes/:correo', clienteController.eliminar)
 
-app.listen(process.env.PORT || 7777, '0.0.0.0', () => console.log('Servidor en puerto', process.env.PORT || 7777))
+app.listen(process.env.PORT)

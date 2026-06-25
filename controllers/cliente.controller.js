@@ -9,11 +9,14 @@ exports.listar = async (req, res) => {
     }
 }
 
+exports.formulario =async(req,res) => {
+    res.render('pages/form')
+}
 
 exports.consultarId = async (req, res) => {
     try {
         const clientes = await modeloCliente.find({email:req.params.correo});
-        res.redirect('/clientes');
+        res.redirect('/api/');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -27,7 +30,7 @@ exports.registrar = async (req, res) => {
             telefono: req.body.telefono
         }
         const clientes = await modeloCliente.create(clienteNuevo);
-        res.redirect('/clientes/form');
+        res.render('pages/form');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
