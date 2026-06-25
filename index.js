@@ -3,13 +3,18 @@ require('dotenv').config()
 const clienteController = require ('./controllers/cliente.controller');
 
 const app = express()
+app.set('view engine', 'ejs');
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
+const enrutamiento = require('./routes/enrutamiento.router')
+app.use('/api/v1', enrutamiento)
+
+app.get('/clientes/form', (req, res) => res.render('pages/form'))
 app.get('/clientes', clienteController.listar)
 app.get('/clientes/:correo', clienteController.consultarId)
 app.post('/clientes/', clienteController.registrar)
 app.delete('/clientes/:correo', clienteController.eliminar)
 
-app.listen(process.env.PORT || 8080, '0.0.0.0', () => console.log('Servidor en puerto', process.env.PORT || 8080))
+app.listen(process.env.PORT || 7777, '0.0.0.0', () => console.log('Servidor en puerto', process.env.PORT || 7777))
